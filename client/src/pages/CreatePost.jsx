@@ -22,15 +22,16 @@ function CreatePost() {
                 const response = await fetch ('http://localhost:8080/api/v1/dalle', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
                     },
-                    body: JSON.stringify(form)
+                    body: JSON.stringify({...form})
                     
                 })
                 await response.json();
                 navigate('/');
             } catch (error) {
-                alert(error)
+                console.log(error)
             }finally{
                 setLoading(false)
             }
